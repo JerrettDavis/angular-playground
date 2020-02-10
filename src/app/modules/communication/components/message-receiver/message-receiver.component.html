@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <h2 mat-card-title>Message Receiver</h2>
+    <h3 mat-card-subtitle>This component receives messages from a service</h3>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="card-content-container" *ngIf="messages.length > 0">
+      <div *ngFor="let message of messages">
+        <strong>[{{ message.received | date: 'medium' }}] MESSAGE RECEIVED: </strong> {{message.message}}
+      </div>
+    </div>
+    <div class="card-content-container no-messages" *ngIf="messages.length === 0">
+      There are no messages
+    </div>
+  </mat-card-content>
+</mat-card>

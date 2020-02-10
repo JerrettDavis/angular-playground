@@ -1,0 +1,12 @@
+.components-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+app-message-sender {
+  margin-right: 16px;
+}
+
+app-message-receiver {
+  flex-grow: 1;
+}

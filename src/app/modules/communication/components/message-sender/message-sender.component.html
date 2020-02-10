@@ -1,0 +1,19 @@
+<form [formGroup]="formGroup" (ngSubmit)="sendMessage()">
+  <mat-card>
+    <mat-card-header>
+      <h2 mat-card-title>Message Sender</h2>
+      <h3 mat-card-subtitle>This component sends messages through a service</h3>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-content-container">
+        <mat-form-field>
+          <mat-label>Message</mat-label>
+          <input matInput formControlName="message" placeholder="Just start typing" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="right">
+      <button mat-button type="submit" color="primary">Send Message</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
