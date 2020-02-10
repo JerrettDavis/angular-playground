@@ -1,6 +1,12 @@
 {
   "name": "playground",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "A collection of miscellaneous experiments and lessons.",
+  "license": "MIT",
+  "author": {
+    "name": "Jerrett Davis"
+  },
+  "homepage": "https://github.com/JerrettDavis/angular-playground",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

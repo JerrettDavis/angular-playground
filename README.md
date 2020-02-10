@@ -1,27 +1,62 @@
 # Playground
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
+## Description
 
-## Development server
+I was looking for a way to delve into some of core Angular and RxJS concepts in a 
+simple, straightforward, and real-world way. Unfortunately, it seems like many of the 
+examples out on the web are great from a conceptual standpoint, but they can be cumbersome
+to implement yourself.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This is my attempt to tackle as many of the concepts as possible, and hopefully end up
+with a collection of little toys, test, experiments, and learning experiences.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Clone
 
-## Build
+Clone this repo to your local machine using: 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```shell script
+git clone https://github.com/JerrettDavis/angular-playground.git
+```
 
-## Running unit tests
+### Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If you haven't navigated to the project directory, run:
 
-## Running end-to-end tests
+```shell script
+cd angular-playground
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+From there, you'll need to install the node modules by running:
 
-## Further help
+```shell script
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Running
+
+To get started hacking away, in the root directory, simply run:
+
+```shell script
+ng serve
+```
+
+This will start up the development server at `http://localhost:4200`. The change-watcher
+will pick up most changes, and provide you with live refreshes in the browser.
+
+## Deployment
+
+To deploy, from the root directory, run the following:
+
+```shell script
+ng build --prod
+```
+
+This will result in the project being built and placed in the `dist` directory in the project
+root.
+
+## License
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](LICENSE.md)**
