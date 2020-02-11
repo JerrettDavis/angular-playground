@@ -1,4 +1,4 @@
-image: colthreepv/node-chrome:9
+image: colthreepv/node-chrome:13
 
 cache:
   paths:
