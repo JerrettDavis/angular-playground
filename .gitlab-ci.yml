@@ -1,4 +1,4 @@
-image: trion/ng-cli-karma
+image: colthreepv/node-chrome:9
 
 cache:
   paths:
@@ -24,3 +24,4 @@ test:
 build:
   stage: build
   script: ./node_modules/@angular/cli/bin/ng build --progress false --prod
+
