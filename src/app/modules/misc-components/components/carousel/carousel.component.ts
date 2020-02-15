@@ -55,7 +55,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 
   setup(): void {}
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize() {
     this.sizeChanged.next(true);
   }
