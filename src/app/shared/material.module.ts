@@ -1,19 +1,25 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+    DragDropModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -21,10 +27,12 @@ import {MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/materi
     MatInputModule,
     MatListModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule
   ],
   exports: [
     BrowserAnimationsModule,
+    DragDropModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -32,8 +40,8 @@ import {MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/materi
     MatInputModule,
     MatListModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule
   ]
 })
-export class MaterialModule {
-}
+export class MaterialModule {}

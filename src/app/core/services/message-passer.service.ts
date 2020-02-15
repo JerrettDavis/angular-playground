@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,7 @@ export class MessagePasserService {
 
   public messageReceived$ = this.messageReceived.asObservable();
 
-  constructor() {
-  }
+  constructor() {}
 
   public sendMessage(message: string): void {
     this.messageReceived.next(message);

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {MessagePasserService} from '../../../../core/services/message-passer.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MessagePasserService } from '../../../../core/services/message-passer.service';
 
 @Component({
   selector: 'app-message-sender',
@@ -11,9 +11,7 @@ export class MessageSenderComponent implements OnInit {
   title = 'Playground';
   formGroup: FormGroup;
 
-  constructor(private messagePasserService: MessagePasserService,
-              private formBuilder: FormBuilder) {
-  }
+  constructor(private messagePasserService: MessagePasserService, private formBuilder: FormBuilder) {}
 
   public ngOnInit(): void {
     this.formGroup = this.formBuilder.group({

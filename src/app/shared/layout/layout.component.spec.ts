@@ -8,7 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { LayoutComponent } from './layout.component';
-import {RouterTestingModule} from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent;
@@ -25,7 +25,7 @@ describe('LayoutComponent', () => {
         MatIconModule,
         MatListModule,
         MatSidenavModule,
-        MatToolbarModule,
+        MatToolbarModule
       ]
     }).compileComponents();
   }));

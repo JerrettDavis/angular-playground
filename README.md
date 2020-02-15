@@ -2,8 +2,8 @@
 
 ## Description
 
-I was looking for a way to delve into some of core Angular and RxJS concepts in a 
-simple, straightforward, and real-world way. Unfortunately, it seems like many of the 
+I was looking for a way to delve into some of core Angular and RxJS concepts in a
+simple, straightforward, and real-world way. Unfortunately, it seems like many of the
 examples out on the web are great from a conceptual standpoint, but they can be cumbersome
 to implement yourself.
 
@@ -14,7 +14,7 @@ with a collection of little toys, test, experiments, and learning experiences.
 
 ### Clone
 
-Clone this repo to your local machine using: 
+Clone this repo to your local machine using:
 
 ```shell script
 git clone https://github.com/JerrettDavis/angular-playground.git
@@ -57,6 +57,7 @@ This will result in the project being built and placed in the `dist` directory i
 root.
 
 ## License
+
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](LICENSE.md)**

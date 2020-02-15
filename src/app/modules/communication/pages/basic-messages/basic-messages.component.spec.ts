@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BasicMessagesComponent } from './basic-messages.component';
-import {MessageSenderComponent} from '../../components/message-sender/message-sender.component';
-import {MessageReceiverComponent} from '../../components/message-receiver/message-receiver.component';
-import {SharedModule} from '../../../../shared/shared.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import { MessageSenderComponent } from '../../components/message-sender/message-sender.component';
+import { MessageReceiverComponent } from '../../components/message-receiver/message-receiver.component';
+import { SharedModule } from '../../../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('BasicMessagesComponent', () => {
   let component: BasicMessagesComponent;
@@ -12,10 +12,9 @@ describe('BasicMessagesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BasicMessagesComponent, MessageSenderComponent, MessageReceiverComponent ],
-      imports: [ SharedModule, ReactiveFormsModule ]
-    })
-    .compileComponents();
+      declarations: [BasicMessagesComponent, MessageSenderComponent, MessageReceiverComponent],
+      imports: [SharedModule, ReactiveFormsModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

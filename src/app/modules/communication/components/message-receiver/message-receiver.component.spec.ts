@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessageReceiverComponent } from './message-receiver.component';
-import {SharedModule} from '../../../../shared/shared.module';
+import { SharedModule } from '../../../../shared/shared.module';
 
 describe('MessageReceiverComponent', () => {
   let component: MessageReceiverComponent;
@@ -9,10 +9,9 @@ describe('MessageReceiverComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageReceiverComponent ],
-      imports: [ SharedModule ]
-    })
-    .compileComponents();
+      declarations: [MessageReceiverComponent],
+      imports: [SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
