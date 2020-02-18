@@ -13,6 +13,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   declarations: [],
@@ -28,7 +29,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    PortalModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -41,7 +43,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    PortalModule
   ]
 })
 export class MaterialModule {}

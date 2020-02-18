@@ -1,33 +1,38 @@
 import {
+  AfterContentChecked,
   AfterViewInit,
   Component,
+  ContentChildren,
   ElementRef,
   HostListener,
+  Input,
   OnInit,
   QueryList,
-  ViewChild,
-  ViewChildren
+  ViewChild
 } from '@angular/core';
 import { interval, of, Subject } from 'rxjs';
 import { debounce, delay, startWith, tap } from 'rxjs/operators';
+import { CarouselItem } from './carousel-item.component';
 
 @Component({
-  selector: 'app-carousel',
+  selector: 'carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit, AfterViewInit {
+export class CarouselComponent implements OnInit, AfterViewInit, AfterContentChecked {
   private sizeChanged: Subject<boolean>;
-  sizeChangedDebounced;
+  private sizeChangedDebounced;
 
-  loaded = false;
-  items: number[] = [...Array(25).keys()];
-  page = 0;
+  private loaded = false;
+  private page = 0;
+  private visible = false;
+
+  @Input('diagnostics') showDiagnostics: boolean;
 
   @ViewChild('carousel', { static: true }) carousel: ElementRef;
   @ViewChild('carouselContainer', { static: true }) carouselContainer: ElementRef;
   @ViewChild('carouselItems', { static: true }) carouselItemsContainer: ElementRef;
-  @ViewChildren('carouselItem') carouselItems: QueryList<ElementRef>;
+  @ContentChildren(CarouselItem, { descendants: true }) carouselItems: QueryList<CarouselItem>;
 
   @ViewChild('scrollThumb', { static: true }) scrollThumb: ElementRef;
 
@@ -37,11 +42,11 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     this.sizeChanged = new Subject<boolean>();
     this.sizeChangedDebounced = this.sizeChanged.pipe(debounce(() => interval(100)));
     this.sizeChangedDebounced.subscribe(() => {
-      this.setWidth();
+      this.redraw();
     });
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     of()
       .pipe(
         startWith(null),
@@ -49,22 +54,53 @@ export class CarouselComponent implements OnInit, AfterViewInit {
         tap(() => (this.loaded = true))
       )
       .subscribe(() => {
-        this.setWidth();
+        this.setVisibility();
+        this.redraw();
       });
   }
 
-  setup(): void {}
+  public ngAfterContentChecked(): void {
+    this.setVisibility();
+  }
+
+  private setVisibility(): void {
+    if (!this.visible && this.carouselContainer.nativeElement.offsetParent != null) {
+      this.visible = true;
+      this.redraw();
+    } else if (this.visible && this.carouselContainer.nativeElement.offsetParent === null) {
+      this.visible = false;
+    }
+  }
+
+  get diagnostics() {
+    return JSON.stringify({
+      isLoaded: this.loaded,
+      isVisible: this.visible,
+      numPages: this.numPages,
+      curPage: this.curPage,
+      numItems: this.numItems,
+      numItemsVisible: this.numItemsVisible
+    });
+  }
 
   @HostListener('window:resize')
-  onResize() {
+  private onResize() {
     this.sizeChanged.next(true);
   }
 
-  setWidth(): void {
-    if (!this.loaded || !this.carouselItemsContainer) {
+  public redraw(): void {
+    if (!this.visible) {
       return;
     }
+    this.setWidth();
+    this.reCalcLeft();
+  }
 
+  private setWidth(): void {
+    if (!this.visible || !this.loaded || !this.carouselItemsContainer) {
+      return;
+    }
+    console.log('setWidth() Called');
     const container = this.carouselItemsContainer.nativeElement;
     container.style.left = null;
     container.style.width = null;
@@ -72,7 +108,17 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 
     const thumbWidth = this.carouselContainer.nativeElement.offsetWidth / this.numPages;
     this.scrollThumb.nativeElement.style.width = thumbWidth + 'px';
-    this.reCalcLeft();
+  }
+
+  private reCalcLeft(): void {
+    if (!this.visible || !this.loaded) {
+      return;
+    }
+    const itemsContainer = this.carouselItemsContainer.nativeElement;
+    itemsContainer.style.left = -this.computeItemWidth() * this.numItemsVisible * this.page + 'px';
+
+    const thumbWidth = this.carouselContainer.nativeElement.offsetWidth / this.numPages;
+    this.scrollThumb.nativeElement.style.left = this.page * thumbWidth + 'px';
   }
 
   get numItems(): number {
@@ -99,8 +145,12 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     return Math.ceil(this.carouselItems.length / itemsPerScreen);
   }
 
+  get curPage(): number {
+    return this.page;
+  }
+
   private computeItemWidth(): number {
-    const item: HTMLElement = this.carouselItems.first.nativeElement;
+    const item: HTMLElement = this.carouselItems.first.elementRef.nativeElement;
     const itemWidth: number = item.offsetWidth;
     const styles = getComputedStyle(item);
     const leftMargin = parseInt(styles.marginLeft, 10);
@@ -109,7 +159,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     return itemWidth + leftMargin + rightMargin;
   }
 
-  onLeftClick(): void {
+  public onLeftClick(): void {
     if (this.page === 0) {
       return;
     }
@@ -118,20 +168,12 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     this.reCalcLeft();
   }
 
-  onRightClick() {
+  public onRightClick(): void {
     if (this.page === this.numPages - 1) {
       return;
     }
 
     this.page++;
     this.reCalcLeft();
-  }
-
-  private reCalcLeft(): void {
-    const itemsContainer = this.carouselItemsContainer.nativeElement;
-    itemsContainer.style.left = -this.computeItemWidth() * this.numItemsVisible * this.page + 'px';
-
-    const thumbWidth = this.carouselContainer.nativeElement.offsetWidth / this.numPages;
-    this.scrollThumb.nativeElement.style.left = this.page * thumbWidth + 'px';
   }
 }

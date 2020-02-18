@@ -10,9 +10,8 @@
     <div class="outer-carousel-container">
       <div class="carousel-container" #carouselContainer>
           <div class="carousel-items" #carouselItems>
-            <div class="carousel-item" #carouselItem *ngFor="let num of items">
-              {{ num }}
-            </div>
+            <ng-content>
+            </ng-content>
           </div>
       </div>
       <div class="scroll-thumb" #scrollThumb cdkDrag cdkDragLockAxis="x"
@@ -29,4 +28,7 @@
   </div>
 </div>
 
+<ng-container *ngIf="showDiagnostics">
+  {{diagnostics}}
+</ng-container>
 

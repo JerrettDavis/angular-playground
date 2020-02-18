@@ -2,8 +2,27 @@
   <h1>Components</h1>
 
   <h3>Carousel</h3>
+
+  <h4></h4>
   <div class="carousel">
-    <app-carousel></app-carousel>
+    <carousel>
+      <carousel-item *ngFor="let item of items">
+        <div class="square-carousel-item mat-elevation-z9">
+          {{ item }}
+        </div>
+      </carousel-item>
+    </carousel>
+  </div>
+
+  <h4>Image Carousel</h4>
+  <div class="carousel">
+    <carousel>
+      <carousel-item *ngFor="let image of images">
+        <div class="image-container mat-elevation-z9">
+          <img [src]="image.url" alt="Placeholder Image" />
+        </div>
+      </carousel-item>
+    </carousel>
   </div>
 </div>
 
