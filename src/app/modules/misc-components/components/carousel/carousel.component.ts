@@ -84,7 +84,7 @@ export class CarouselComponent implements OnInit, AfterViewInit, AfterContentChe
   }
 
   @HostListener('window:resize')
-  private onResize() {
+  public onResize() {
     this.sizeChanged.next(true);
   }
 
