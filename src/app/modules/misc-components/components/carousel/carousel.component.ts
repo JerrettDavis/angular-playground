@@ -150,6 +150,10 @@ export class CarouselComponent implements OnInit, AfterViewInit, AfterContentChe
   }
 
   private computeItemWidth(): number {
+    const first = this.carouselItems.first;
+    if (!first) {
+      return -1;
+    }
     const item: HTMLElement = this.carouselItems.first.elementRef.nativeElement;
     const itemWidth: number = item.offsetWidth;
     const styles = getComputedStyle(item);
