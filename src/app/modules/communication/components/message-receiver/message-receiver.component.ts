@@ -5,7 +5,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-message-receiver',
   templateUrl: './message-receiver.component.html',
-  styleUrls: ['./message-receiver.component.scss']
+  styleUrls: ['./message-receiver.component.scss'],
+  standalone: false
 })
 export class MessageReceiverComponent implements OnInit, OnDestroy {
   messages: BasicMessage[] = [];

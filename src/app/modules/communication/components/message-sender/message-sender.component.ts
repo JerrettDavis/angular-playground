@@ -5,7 +5,8 @@ import { MessagePasserService } from '../../../../core/services/message-passer.s
 @Component({
   selector: 'app-message-sender',
   templateUrl: './message-sender.component.html',
-  styleUrls: ['./message-sender.component.scss']
+  styleUrls: ['./message-sender.component.scss'],
+  standalone: false
 })
 export class MessageSenderComponent implements OnInit {
   title = 'Playground';

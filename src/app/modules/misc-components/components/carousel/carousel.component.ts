@@ -17,7 +17,8 @@ import { CarouselItem } from './carousel-item.component';
 @Component({
   selector: 'carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  styleUrls: ['./carousel.component.scss'],
+  standalone: false
 })
 export class CarouselComponent implements OnInit, AfterViewInit, AfterContentChecked {
   private sizeChanged: Subject<boolean>;
